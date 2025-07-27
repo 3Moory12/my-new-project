@@ -1,6 +1,5 @@
 import React from 'react';
 import { optimizeImage } from './imageUtils';
-import { useImageLoading } from './hooks/imageLoading';
 
 interface ImageProps {
   src: string;
@@ -13,6 +12,19 @@ interface ImageProps {
   style?: React.CSSProperties;
 }
 
+// Define default styles for image and placeholder
+const imageStyles = {
+  responsive: {
+    width: '100%',
+    height: 'auto',
+    display: 'block',
+  } as React.CSSProperties,
+  placeholder: {
+    background: '#f0f0f0',
+    filter: 'blur(8px)',
+  } as React.CSSProperties,
+};
+
 const Image: React.FC<ImageProps> = ({
   src,
   alt,
@@ -23,9 +35,17 @@ const Image: React.FC<ImageProps> = ({
   className,
   style,
 }) => {
-  const { isLoading } = useImageLoading();
-
+  const isLoading = false;
   const optimizedImage = optimizeImage(src, width || 800, height || 600);
+
+  // Dummy implementation for responsiveImage if not already defined/imported
+  function responsiveImage(src: string, sizes: string[]) {
+    return sizes.map(size => ({
+      src: optimizeImage(src, parseInt(size), parseInt(size)),
+      media: `(max-width: ${size}px)`,
+    }));
+  }
+
   const responsiveImages = sizes
     ? responsiveImage(src, sizes)
     : [{ src: optimizedImage, media: '' }];

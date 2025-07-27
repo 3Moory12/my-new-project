@@ -1,5 +1,5 @@
 import React from 'react';
-import {heroImage} from '../assets/hero-image.jpg.jpg';//"C:\Users\ONE\Desktop\مشروع ستايلك\Image\hero-image.jpg.jpg"
+// import {heroImage} from '../assets/hero-image.jpg.jpg';//"C:\Users\ONE\Desktop\مشروع ستايلك\Image\hero-image.jpg.jpg"
 
 interface FeaturedImageProps {
   src: string;

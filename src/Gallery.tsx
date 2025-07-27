@@ -1,7 +1,7 @@
 import React from 'react';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
-import { Image } from './Image';
+import Image from './Image';
 
 interface GalleryProps {
   images: {
